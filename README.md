@@ -59,7 +59,7 @@
 -belongs_to :user
 -belongs_to :product
 
-## credit_cards テーブル　（データベースに保存するべきではない気がする）
+## credit_cards テーブル　
 
 | Column         | Type       | Options           |
 | -------------- | ---------- | ----------------- |
