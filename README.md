@@ -12,8 +12,6 @@
 | encrypted-password | string | null: false |
 | name               | string | null: false |
 | reader-name        | string | null: false |
-| family-name        | string | null: false |
-| reader-family_name | string | null: false |
 | birthday           | string | null: false |
 
 
@@ -42,8 +40,6 @@
 
 -belongs_to :user
 -has_many   :comments
--has_one    :credit_card
--has_one    :user_address
 
 
 ## comments テーブル
@@ -70,20 +66,19 @@
 ## Association
 
 -has_one    :user
--belongs_to :user_address
+-has_one :user_address
 
 ## user_address　テーブル
 
 | Column                  | Type      | Options           | default
 | ----------------------- | --------- | ----------------- | ----------
-| Zip-code                | string    | null: false       |
-| Prefectures             | text      | null: false       | Active Hash
-| Municipality            | string    | null: false       |
+| zip-code                | string    | null: false       |
+| prefectures             | text      | null: false       | Active Hash
+| municipality            | string    | null: false       |
 | address                 | string    | null: false       |
 | building-name            | string    | null: false      |
-| phone_number            | string    | null: false       |
+| phone-number            | string    | null: false       |
 
 ### Association
 
--belongs_to :user
--has_one    :credit_card
+-belongs_to    :credit_card
