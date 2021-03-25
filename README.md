@@ -31,8 +31,8 @@
 | product_condition_id       | integer   | null: false       | active_hash |
 | shipping_charges_id        | integer   | null: false       | active_hash |
 | estimated_shipping-date_id | integer   | null: false       | active_hash |
-| product_name               | string    | null: false       |             |
-| product_price              | integer   | null: false       |             |
+| product_name_id            | string    | null: false       | active_hash |
+| product_price_id           | integer   | null: false       | active_hash |
 | text                       | string    | null: false       |             |
 | user                       | references| foreign-key :true |             |
 
@@ -60,27 +60,27 @@
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
-| item        | references  | foreign_key :true    |
+| products    | references  | foreign_key :true    |
 | user        | references  | foreign_key :true    |
 
 ## Association
 
 -belongs_to :user
 -belongs_to :product
--has/many   :user_addresses
+-belongs_to   :user_address
 
 ## user_addresses　テーブル
 
-| Column                  | Type      | Options           | default
-| ----------------------- | --------- | ----------------- | ----------
-| zip_code                | string    | null: false       |
-| prefectures             | text      | null: false       | Active Hash
-| municipality            | string    | null: false       |
-| address                 | string    | null: false       |
-| building_name           | string    | null: false       |
-| phone_number            | string    | null: false       |
+| Column                  | Type       | Options             | default
+| ----------------------- | ---------  | --------------------| ----------
+| zip_code                | string     | null: false         |
+| prefectures             | integer    | null: false         | Active Hash
+| municipality            | string     | null: false         |
+| address                 | string     | null: false         |
+| building_name           | string     | null: false         |
+| phone_number            | string     | null: false         |
+| purchase_histories      |references  | foreign_key :true   |
 
 ### Association
 
--belongs_to    :user
 -belongs_to    :purchase_histories

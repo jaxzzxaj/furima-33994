@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="K6H4SIeY8THct_MybIj7" name="ページ1">
-        <mxGraphModel dx="440" dy="1756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="824" dy="1756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -16,10 +16,10 @@
                     <mxGeometry y="26" width="160" height="134" as="geometry"/>
                 </mxCell>
                 <mxCell id="41" value="products table" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=0;sketch=1;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="40" width="160" height="200" as="geometry"/>
+                    <mxGeometry x="440" y="40" width="170" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" value="・seller&#10;・category&#10;・product-condition&#10;・shipping-charges&#10;・extimated-shipping-date&#10;・product-name&#10;・product-image&#10;・product-price&#10;・text&#10;・user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;sketch=0;shadow=0;" parent="41" vertex="1">
-                    <mxGeometry y="26" width="160" height="174" as="geometry"/>
+                <mxCell id="42" value="・seller&#10;・category&#10;・product-condition_id&#10;・shipping-charges_id&#10;・extimated-shipping-date_id&#10;・product-name_id&#10;・product-image_id&#10;・product-price_id&#10;・text&#10;・user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;sketch=0;shadow=0;" parent="41" vertex="1">
+                    <mxGeometry y="26" width="170" height="174" as="geometry"/>
                 </mxCell>
                 <mxCell id="46" value="comments table" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=0;sketch=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="100" width="160" height="80" as="geometry"/>
@@ -42,7 +42,7 @@
                 <mxCell id="72" value="purchase histories table" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="220" y="320" width="170" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="73" value="・item&#10;・user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="72" vertex="1">
+                <mxCell id="73" value="・products&#10;・user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="72" vertex="1">
                     <mxGeometry y="26" width="170" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.012;entryY=0.351;entryDx=0;entryDy=0;entryPerimeter=0;endSize=20;endArrow=ERoneToMany;endFill=0;" parent="1" source="38" target="42" edge="1">
