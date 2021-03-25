@@ -9,7 +9,6 @@
 | nickname           | string | null: false  |
 | email              | string | unique: true |
 | encrypted_password | string | null: false  |
-| name               | string | null: false  |
 | family_name        | string | null: false  |
 | second_name        | string | null: false  |
 | reader_family_name | string | null: false  |
@@ -33,7 +32,7 @@
 | shipping_charges_id        | integer   | null: false       | active_hash |
 | estimated_shipping-date_id | integer   | null: false       | active_hash |
 | product_name               | string    | null: false       |             |
-| product_price              | string    | null: false       |             |
+| product_price              | integer   | null: false       |             |
 | text                       | string    | null: false       |             |
 | user                       | references| foreign-key :true |             |
 
@@ -57,19 +56,20 @@
 -belongs_to :user
 -belongs_to :product
 
-##  purchase_history　テーブル　
+##  purchase_histories　テーブル　
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
-| item_id     | references  | foreign_key :true    |
-| user_id     | references  | foreign_key :true    |
+| item        | references  | foreign_key :true    |
+| user        | references  | foreign_key :true    |
 
 ## Association
 
 -belongs_to :user
--belongs_t  :products
+-belongs_to :product
+-has/many   :user_addresses
 
-## user_address　テーブル
+## user_addresses　テーブル
 
 | Column                  | Type      | Options           | default
 | ----------------------- | --------- | ----------------- | ----------
@@ -82,4 +82,5 @@
 
 ### Association
 
--belongs_to    :users
+-belongs_to    :user
+-belongs_to    :purchase_histories
