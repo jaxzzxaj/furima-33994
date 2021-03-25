@@ -7,19 +7,22 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| mail-address       | text   | null: false |
-| password           | string | null: false |
-| encrypted-password | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
 | name               | string | null: false |
-| reader-name        | string | null: false |
-| birthday           | string | null: false |
+| family_name        | string | null: false |
+| second_name        | string | null: false |
+| reader_family_nam  | string | null: false |
+| reader_second_name | string | null: false |
+| birthday           | date   | null: false |
 
 
 ### Association
 
 -has_many :products
 -has_many :comments
--has_one  :credit_card
+-has_many :user_address
+-has_many :purchase_history
 
 ## products テーブル
 
@@ -40,6 +43,7 @@
 
 -belongs_to :user
 -has_many   :comments
+-has_many   :purchase_history
 
 
 ## comments テーブル
@@ -55,18 +59,17 @@
 -belongs_to :user
 -belongs_to :product
 
-## credit_cards テーブル　
+##  purchase_history　テーブル　
 
-| Column         | Type       | Options           |
-| -------------- | ---------- | ----------------- |
-| card_info      | text       | null: false       |　
-| expiration-date| references | foreign_key :true |
-| security-code  | references | foreign_key :true |
+| Column      | Type        | Options              |
+| ----------- | ----------- | -------------------- |
+| item_id     | references  | foreign_key :true    |
+| user_id     | references  | foreign_key :true    |
 
 ## Association
 
--has_one    :user
--has_one :user_address
+-belongs_to :user
+-belongs_t  :products
 
 ## user_address　テーブル
 
@@ -76,9 +79,9 @@
 | prefectures             | text      | null: false       | Active Hash
 | municipality            | string    | null: false       |
 | address                 | string    | null: false       |
-| building-name            | string    | null: false      |
+| building-name           | string    | null: false       |
 | phone-number            | string    | null: false       |
 
 ### Association
 
--belongs_to    :credit_card
+-belongs_to    :users
