@@ -2,18 +2,18 @@
 
 # テーブル設計
 
-## user テーブル
+## users テーブル
 
-| Column             | Type   | Options      |
-| ------------------ | ------ | -----------  |
-| nickname           | string | null: false  |
-| email              | string | unique: true |
-| encrypted_password | string | null: false  |
-| family_name        | string | null: false  |
-| second_name        | string | null: false  |
-| reader_family_name | string | null: false  |
-| reader_second_name | string | null: false  |
-| birthday           | date   | null: false  |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------  |
+| nickname           | string | null :false               |
+| email              | string | unique: true, null :false |
+| encrypted_password | string | null: false               |
+| family_name        | string | null: false               |
+| second_name        | string | null: false               |
+| reader_family_name | string | null: false               |
+| reader_second_name | string | null: false               |
+| birthday           | date   | null: false               |
 
 
 ### Association
@@ -22,17 +22,11 @@
 -has_many :comments
 -has_many :purchase_histories
 
-## product テーブル
+## products テーブル
 
 | Column                     | Type      | Options           | default     |
 | -------------------------- | --------- | ----------------- |-------------|
-| zip_code                   | string    | null :false       |             |
-| prefectures                | integer   | null :false       |             |
-| municipalities             | string    | null :false       |             |
-| block                      | string    | null :false       |             |
-| building_name              | string    | null :false       |             |
-| price                      | integer   | null :false       |             |
-| phone_number               | integer   | null :false       |             |
+| name                       | string    | null: false       |             |
 | category_id                | integer   | null: false       | active_hash |
 | product_condition_id       | integer   | null: false       | active_hash |
 | shipping_charges_id        | integer   | null: false       | active_hash |
@@ -46,10 +40,10 @@
 
 -belongs_to :user
 -has_many   :comments
--has_one   :purchase_history
+-has_one    :purchase_history
 
 
-## comment テーブル
+## comments テーブル
 
 | Column      | Type       | Options           |
 | ----------- | ---------- | ----------------- |
@@ -62,7 +56,7 @@
 -belongs_to :user
 -belongs_to :product
 
-##  purchase_history　テーブル　
+##  purchase_histories　テーブル　
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
@@ -73,21 +67,21 @@
 
 -belongs_to :user
 -belongs_to :product
--belongs_to :user_address
+-has_one    :user_address
 
 ## user_addresses　テーブル
 
 | Column                  | Type       | Options             | default
 | ----------------------- | ---------  | --------------------| ----------
 | zip_code                | string     | null: false         |
-| prefectures             | integer    | null: false         | Active Hash
+| prefectures_id          | integer    | null: false         | Active Hash
 | municipality            | string     | null: false         |
 | address                 | string     | null: false         |
 | building_name           | string     |                     |
 | price                   | integer    | null: false         |
 | phone_number            | string     | null: false         |
-| purchase_histories      |references  | foreign_key :true   |
+| purchase_history        |references  | foreign_key :true   |
 
 ### Association
 
--belongs_to    :purchase_histories
+-belongs_to    :purchase_history
