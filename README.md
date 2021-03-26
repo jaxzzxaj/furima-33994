@@ -2,7 +2,7 @@
 
 # テーブル設計
 
-## users テーブル
+## user テーブル
 
 | Column             | Type   | Options      |
 | ------------------ | ------ | -----------  |
@@ -20,30 +20,36 @@
 
 -has_many :products
 -has_many :comments
--has_many :purchase_history
+-has_many :purchase_histories
 
-## products テーブル
+## product テーブル
 
 | Column                     | Type      | Options           | default     |
 | -------------------------- | --------- | ----------------- |-------------|
-| seller                     | string    | null: false       |             |
+| zip_code                   | string    | null :false       |             |
+| prefectures                | integer   | null :false       |             |
+| municipalities             | string    | null :false       |             |
+| block                      | string    | null :false       |             |
+| building_name              | string    | null :false       |             |
+| price                      | integer   | null :false       |             |
+| phone_number               | integer   | null :false       |             |
 | category_id                | integer   | null: false       | active_hash |
 | product_condition_id       | integer   | null: false       | active_hash |
 | shipping_charges_id        | integer   | null: false       | active_hash |
 | estimated_shipping-date_id | integer   | null: false       | active_hash |
-| product_name_id            | string    | null: false       | active_hash |
-| product_price_id           | integer   | null: false       | active_hash |
-| text                       | string    | null: false       |             |
+| product_id                 | string    | null: false       | active_hash |
+| price_id                   | integer   | null: false       | active_hash |
+| text                       | text      | null: false       |             |
 | user                       | references| foreign-key :true |             |
 
 ### Association
 
 -belongs_to :user
 -has_many   :comments
--has_many   :purchase_history
+-has_one   :purchase_history
 
 
-## comments テーブル
+## comment テーブル
 
 | Column      | Type       | Options           |
 | ----------- | ---------- | ----------------- |
@@ -56,7 +62,7 @@
 -belongs_to :user
 -belongs_to :product
 
-##  purchase_histories　テーブル　
+##  purchase_history　テーブル　
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
@@ -67,7 +73,7 @@
 
 -belongs_to :user
 -belongs_to :product
--belongs_to   :user_address
+-belongs_to :user_address
 
 ## user_addresses　テーブル
 
@@ -77,7 +83,8 @@
 | prefectures             | integer    | null: false         | Active Hash
 | municipality            | string     | null: false         |
 | address                 | string     | null: false         |
-| building_name           | string     | null: false         |
+| building_name           | string     |                     |
+| price                   | integer    | null: false         |
 | phone_number            | string     | null: false         |
 | purchase_histories      |references  | foreign_key :true   |
 
