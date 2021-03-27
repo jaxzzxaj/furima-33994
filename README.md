@@ -6,8 +6,8 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------  |
-| nickname           | string | null :false               |
-| email              | string | unique: true, null :false |
+| nickname           | string | null: false               |
+| email              | string | unique: true, null: false |
 | encrypted_password | string | null: false               |
 | family_name        | string | null: false               |
 | second_name        | string | null: false               |
@@ -34,7 +34,7 @@
 | prefecture_id              | string    | null: false       | active_hash |
 | price                      | integer   | null: false       |             |
 | text                       | text      | null: false       |             |
-| user                       | references| foreign_key :true |             |
+| user                       | references| foreign_key: true |             |
 
 ### Association
 
@@ -48,8 +48,8 @@
 | Column      | Type       | Options           |
 | ----------- | ---------- | ----------------- |
 | text        | text       | null: false       |
-| user        | references | foreign_key :true |
-| product     | references | foreign_key :true |
+| user        | references | foreign_key: true |
+| product     | references | foreign_key: true |
 
 ### Association
 
@@ -60,8 +60,8 @@
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
-| product     | references  | foreign_key :true    |
-| user        | references  | foreign_key :true    |
+| product     | references  | foreign_key: true    |
+| user        | references  | foreign_key: true    |
 
 ## Association
 
@@ -79,7 +79,7 @@
 | address                 | string     | null: false         |
 | building_name           | string     |                     |
 | phone_number            | string     | null: false         |
-| purchase_history        |references  | foreign_key :true   |
+| purchase_history        |references  | foreign_key: true   |
 
 ### Association
 
