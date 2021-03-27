@@ -31,10 +31,10 @@
 | product_condition_id       | integer   | null: false       | active_hash |
 | shipping_charges_id        | integer   | null: false       | active_hash |
 | estimated_shipping-date_id | integer   | null: false       | active_hash |
-| sent_prefecture_id         | string    | null: false       | active_hash |
-| price_id                   | integer   | null: false       |             |
+| prefecture_id              | string    | null: false       | active_hash |
+| price                      | integer   | null: false       |             |
 | text                       | text      | null: false       |             |
-| user                       | references| foreign-key :true |             |
+| user                       | references| foreign_key :true |             |
 
 ### Association
 
@@ -78,7 +78,6 @@
 | municipality            | string     | null: false         |
 | address                 | string     | null: false         |
 | building_name           | string     |                     |
-| price                   | integer    | null: false         |
 | phone_number            | string     | null: false         |
 | purchase_history        |references  | foreign_key :true   |
 
