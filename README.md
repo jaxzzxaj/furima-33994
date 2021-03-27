@@ -30,7 +30,7 @@
 | category_id                | integer   | null: false       | active_hash |
 | product_condition_id       | integer   | null: false       | active_hash |
 | shipping_charges_id        | integer   | null: false       | active_hash |
-| estimated_shipping-date_id | integer   | null: false       | active_hash |
+| estimated_shipping_date_id | integer   | null: false       | active_hash |
 | prefecture_id              | string    | null: false       | active_hash |
 | price                      | integer   | null: false       |             |
 | text                       | text      | null: false       |             |
@@ -60,7 +60,7 @@
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
-| products    | references  | foreign_key :true    |
+| product     | references  | foreign_key :true    |
 | user        | references  | foreign_key :true    |
 
 ## Association
