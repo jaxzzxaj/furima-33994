@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   #"/"のリクエストをされたときに行動するアクションを設定。
   root to: 'products#index'
   #テーブルに対して、許可するアクションの設定。
-  resources :products, only: :index
+  resources :products, only: [:index,:new]
+  resources :users
 end
