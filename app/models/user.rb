@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :email
+    validates :email, uniqueness: true
     validates :encrypted_password
     validates :family_name
     validates :second_name
@@ -15,6 +15,4 @@ class User < ApplicationRecord
     validates :reader_second_name
     validates :birthday
   end
-
-
 end

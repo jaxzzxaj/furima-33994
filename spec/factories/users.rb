@@ -1,18 +1,14 @@
 FactoryBot.define do
   factory :user do
-    transit do
-      person{Gimei.name}
-    end
-    nickname             {Faker::Name.name}
+
+    nickname             {"ヤマタロウ"}
     email                {Faker::Internet.email}
-    password             {Forgery(:basic).text}
-    encrypted_password   {password}
-    family_name          {person.first.kanji}
-    second_name          {person::last.kanji}
-    reader_family_name   {person::first.katakana}
-    reader_second_name   {person::last.katakana}
-    birthday_year        {Forgery(:date).year}
-    birthday_month       {Forgery(:date).month}
-    birthday_day         {Forgery(:date).day}
+    password             {"password1"}
+    encrypted_password   {"password1"}
+    family_name          {"山田"}
+    second_name          {"太郎"}
+    reader_family_name   {"ヤマダ"}
+    reader_second_name   {"タロウ"}
+    birthday             {"1940-01-01"}
   end
 end
