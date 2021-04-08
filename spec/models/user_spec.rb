@@ -59,6 +59,12 @@ RSpec.describe User, type: :model do
         expect(@user.errors[:password_confirmation]).to include()
       end
 
+      it "パスワードは、半角英数字混合の入力が必須であること" do
+        @user = build(:user, encrypted_password: '12345')
+        @user.valid?
+        expect(@user.errors[:password_confirmation]).to include()
+      end
+
       it "名字が空だと不可" do
         @user.family_name = ''
         @user.valid?
@@ -81,6 +87,21 @@ RSpec.describe User, type: :model do
         @user.reader_second_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Reader second name can't be blank")
+      end
+
+      it "ユーザ本名は、全角（漢字・ひらがな・カタカナ）での入力が必須であること" do
+        @user.family_name = "kanji"
+        @user.second_name = "hiragana"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name is invalid. Input full-width characters.", "Second name is invalid. Input full-width characters.")
+      end
+
+
+      it "ユーザ本名のフリガナは、全角（カタカナ）での入力が必須であること" do
+        @user.reader_family_name = "漢字"
+        @user.reader_second_name = "ひらがな"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Reader family name is invalid. Input full-width  katakana characters.", "Reader second name is invalid. Input full-width  katakana characters.")
       end
 
       it "誕生年が空だと不可" do
