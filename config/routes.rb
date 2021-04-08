@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root to: 'products#index'
   #テーブルに対して、許可するアクションの設定。
   resources :products, only: [:index,:new]
-  resources :users
+  resources :users, only: [:index,:new,:create]
 end

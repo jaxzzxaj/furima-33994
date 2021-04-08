@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2021_04_02_112508) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "password_confirmation", default: "", null: false
     t.string "nickname", null: false
     t.string "family_name", null: false
     t.string "reader_family_name", null: false
     t.string "second_name", null: false
     t.string "reader_second_name", null: false
-    t.string "birthday", null: false
+    t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
