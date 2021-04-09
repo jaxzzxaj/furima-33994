@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   #テーブル間のアソシエーション（user_idはpresence: trueしなくともよい＝つながっているからデフォルトでなる）
-  belongs_to :user
+  #belongs_to :user
 
   # with_options presence: true do
   #   validates :name

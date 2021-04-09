@@ -1,4 +1,4 @@
-##class ProductsController < ApplicationController
+class ProductsController < ApplicationController
   #未ログインuserのみ特定のアクションを制限する設定
   #before_action :move_to_index, except: :index
   #下記の記述で@productsの中にすべてのproductテーブルのレコードを取得する。
@@ -22,4 +22,4 @@
   #     redirect_to action: :index
   #   end
   # end
-  #end
+  end
