@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
   #未ログインuserのみ特定のアクションを制限する設定
   before_action :move_to_index, except: :index
-  #下記の記述で@productsの中にすべてのproductテーブルのレコードを取得する。
+  #下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
-   @products = Product.includes(:user)
+    @product = Product.includes(:user)
+    @products = Product.order("ceated_at DESK")
   end
 
   #下記の記述でnewアクションで記入したuserのすべてのレコード＋ユーザのidを取得。
@@ -26,7 +27,7 @@ class ProductsController < ApplicationController
 
 
   def user_params
-    params.require(:product).permit(:name,:category_id,:product_condition,:shipping_charges_id,:estimates_shipping_date,:prefecture,:price,:text,:image).merge(user_id: current_user.id)
+    params.require(:product).permit(:name,:category_id,:product_condition_id,:shipping_charges_id,:estimates_shipping_date_id,:prefecture_id,:price,:text,:image).merge(user_id: current_user.id)
   end
 
   def move_to_index

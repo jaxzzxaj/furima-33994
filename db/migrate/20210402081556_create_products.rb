@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string       :prefecture_id,              null: false
       t.integer      :price,                      null: false
       t.text         :text,                       null: false
-      #t.references   :user,                       foreign_key:true
+      t.integer      :genre_id,                   null: false
 
       t.timestamps
     end
