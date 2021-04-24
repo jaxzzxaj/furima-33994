@@ -6,16 +6,17 @@ class Product < ApplicationRecord
   belongs_to :genre
 
   #スクロールバーの選択で「ーー」のときは保存できないようにする記述
-  validates :genre_id, numericality: { other_than: 0}
+  #ひとつのvalidatesに複数のカラムを入れても良い！
+  vwith_options numericality: { other_than: 0} do
+    validates :category_id, :product_condition_id, :shipping_charges_id, :estimated_shipping_date_id, :prefecture_id
+  end
+
+  with_options numericality:{ only_integer: true, greater_than: 300, less_than: 9999999},format: {with: /\A[A-Za-z]\w*\z/} do
+    validates :price
+  end
+
 
   with_options presence: true do
-    validates :name
-    validates :category_id
-    validates :product_condition_id
-    validates :shipping_charges_id
-    validates :estimated_shipping_date_id
-    validates :prefecture_id
-    validates :price, numericality:{ only_integer: true, greater_than: 0, less_than: 100},format: {with: /\A[A-Za-z]\w*\z/}
-    validates :text
+    validates :name, :category_id , :product_condition_id, :shipping_charges_id, :estimated_shipping_date_id, :prefecture_id, :price, :text
   end
 end
