@@ -10,5 +10,5 @@ class ProductCondition < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :genre
+  has_many :products
 end

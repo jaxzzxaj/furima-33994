@@ -8,7 +8,6 @@ class Product < ApplicationRecord
   #スクロールバーの選択で「ーー」のときは保存できないようにする記述
   validates :genre_id, numericality: { other_than: 0}
 
-
   with_options presence: true do
     validates :name
     validates :category_id
@@ -16,7 +15,7 @@ class Product < ApplicationRecord
     validates :shipping_charges_id
     validates :estimated_shipping_date_id
     validates :prefecture_id
-    validates :price
+    validates :price, numericality:{ only_integer: true, greater_than: 0, less_than: 100},format: {with: /\A[A-Za-z]\w*\z/}
     validates :text
   end
 end

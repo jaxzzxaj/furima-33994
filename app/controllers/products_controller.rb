@@ -13,21 +13,21 @@ class ProductsController < ApplicationController
   # end
   #下記の記述でnew.html.erb内のform_withで変数が必要だから設定する。
   def new
-    @user=User.new
+    @product=Product.new
   end
 
   #下記の記述でnew.htmlでform_withで取得したデータをDBに保存してindexへ遷移するように設定。
   #上で設定したuserのカラム・レコードのidを取得はこっちであるべき？
   def create
-    @user=create(user_params)
-    root to "/"
+    Product.create(user_params)
+    redirect_to "/"
   end
 
   private
 
 
   def user_params
-    params.require(:product).permit(:name,:category_id,:product_condition_id,:shipping_charges_id,:estimates_shipping_date_id,:prefecture_id,:price,:text,:image).merge(user_id: current_user.id)
+    params.require(:product).permit(:name,:category,:product_condition_id,:shipping_charges_id,:estimated_shipping_date_id,:prefecture_id,:price,:text,:image).merge(user_id: current_user.id)
   end
 
   def move_to_index
