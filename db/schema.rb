@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2021_04_10_043136) do
     t.string "prefecture_id", null: false
     t.integer "price", null: false
     t.text "text", null: false
-    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
