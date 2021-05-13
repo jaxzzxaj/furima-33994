@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
 
   #下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
-    @product = Product.includes(:user)
-    @products = Product.order("ceated_at DESK")
+    # @product = Product.includes(:user)
+    # @products = Product.order("ceated_at DESK")
   end
 
   #下記の記述でnewアクションで記入したuserのすべてのレコード＋ユーザのidを取得。
