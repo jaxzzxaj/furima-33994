@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   end
 
   with_options numericality:{ only_integer: true, greater_than: 300, less_than: 9999999} do
-    validates :price,format: {with: /\A[a-zA-Z0-9]+\z/,message: "is invalid.Input half-width alphanumeric."}
+    validates :price, format: {with: /\A[0-9]+\z/,message: "is invalid.Input half-width alphanumeric."}
   end
 
   with_options presence: true do
