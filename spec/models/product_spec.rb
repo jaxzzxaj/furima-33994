@@ -12,11 +12,6 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
 
-      it "価格は300以上9999999以下であり、半角数字のみで入力する" do
-        @product.price           = 599
-      end
-    end
-
     context "出品できない場合" do
       it "imageが空だと不可" do
         @product.image = nil
