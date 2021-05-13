@@ -11,37 +11,38 @@ RSpec.describe Product, type: :model do
       it "すべてを入力する" do
         expect(@product).to be_valid
       end
+    end
 
-    context "出品できない場合" do
-      it "imageが空だと不可" do
-        @product.image = nil
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Image can't be blank")
-      end
+      context "出品できない場合" do
+        it "imageが空だと不可" do
+          @product.image = nil
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Image can't be blank")
+        end
 
-      it "nameが空だと不可" do
-        @product.name = ''
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Name can't be blank")
-      end
+        it "nameが空だと不可" do
+          @product.name = ''
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Name can't be blank")
+        end
 
-      it "textが空だと不可" do
-        @product.text = ''
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Text can't be blank")
-      end
+        it "textが空だと不可" do
+          @product.text = ''
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Text can't be blank")
+        end
 
-      it "category_idが空だと不可" do
-        @product.category_id = ''
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Category can't be blank")
-      end
+        it "category_idが空だと不可" do
+          @product.category_id = ''
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Category can't be blank")
+        end
 
-      it "category_idが0だと不可" do
-        @product.category_id = 0
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Category must be other than 0")
-      end
+        it "category_idが0だと不可" do
+          @product.category_id = 0
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Category must be other than 0")
+        end
 
         it "product_condition_idが空だと不可" do
           @product.product_condition_id = ''
@@ -111,6 +112,12 @@ RSpec.describe Product, type: :model do
 
         it "priceが全角数字だと不可" do
           @product.price = '１０００'
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Price is not a number")
+        end
+
+        it "priceが英数混合だと不可" do
+          @product.price = "1a2b3c"
           @product.valid?
           expect(@product.errors.full_messages).to include("Price is not a number")
         end
