@@ -115,7 +115,7 @@ RSpec.describe Product, type: :model do
         end
 
         it "priceが全角数字だと不可" do
-          @product.price = １０００
+          @product.price = '１０００'
           @product.valid?
           expect(@product.errors.full_messages).to include("Price is not a number")
         end
