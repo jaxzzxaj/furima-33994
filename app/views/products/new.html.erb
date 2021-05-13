@@ -8,10 +8,6 @@
     <%# メモ：金額設定するからlocaltruedoにならない気がする %>
     <%= form_with model: @product, url:products_path,local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
