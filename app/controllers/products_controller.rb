@@ -34,9 +34,5 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name,:category_id,:product_condition_id,:shipping_charges_id,:estimated_shipping_date_id,:prefecture_id,:price,:text,:image).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
+
 end
