@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
   #未ログインuserを強制的にログインページへ遷移させる設定
   before_action :authenticate_user!, except: :index
-  #未ログインuserのみ特定のアクションを制限する設定
-  before_action :move_to_index, except: :index
+
   #下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
     @product = Product.includes(:user)
