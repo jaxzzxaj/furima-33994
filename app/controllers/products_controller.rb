@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   #下記の記述でnew.htmlでform_withで取得したデータをDBに保存してindexへ遷移するように設定。
   #上で設定したuserのカラム・レコードのidを取得はこっちであるべき？
   def create
-    @product=Product.new(user_params)
+    @product=Product.new(product_params)
     if @product.save
     redirect_to "/"
     else render :new
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   private
 
 
-  def user_params
+  def product_params
     params.require(:product).permit(:name,:category_id,:product_condition_id,:shipping_charges_id,:estimated_shipping_date_id,:prefecture_id,:price,:text,:image).merge(user_id: current_user.id)
   end
 
