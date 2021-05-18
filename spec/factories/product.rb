@@ -12,6 +12,7 @@ FactoryBot.define do
     text                       {"月の絵"}
     price                      {500}
 
+
     #userのfactoryをつなぐ
     association :user
 

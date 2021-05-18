@@ -9,7 +9,9 @@ RSpec.describe Product, type: :model do
   describe "出品" do
     context "出品できる場合" do
       it "すべてを入力する" do
+        binding.pry
         expect(@product).to be_valid
+        
       end
     end
 
@@ -101,17 +103,17 @@ RSpec.describe Product, type: :model do
         it "priceが299以下だと不可" do
           @product.price = 100
           @product.valid?
-          expect(@product.errors.full_messages).to include("Price must be greater than 300")
+          expect(@product.errors.full_messages).to include("Price must be greater than 299")
         end
 
         it "priceが10000000以上だと不可" do
           @product.price = 10000000
           @product.valid?
-          expect(@product.errors.full_messages).to include("Price must be less than 9999999")
+          expect(@product.errors.full_messages).to include("Price must be less than 10000000")
         end
 
         it "priceが全角数字だと不可" do
-          @product.price = '１０００'
+          @product.price = "１０００"
           @product.valid?
           expect(@product.errors.full_messages).to include("Price is not a number")
         end
@@ -126,6 +128,12 @@ RSpec.describe Product, type: :model do
           @product.price = "abcdef"
           @product.valid?
           expect(@product.errors.full_messages).to include("Price is not a number")
+        end
+
+        it "userが存在しないと登録できない" do
+          @product.user = nil
+          @product.valid?
+          expect(@product.errors.full_messages).to include("User must exist")
         end
       end
   end
