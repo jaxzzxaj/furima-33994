@@ -3,7 +3,11 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :product_condition, :shipping_charges, :estimated_shipping_date, :prefecture
+  belongs_to :category
+  belongs_to :product_condition
+  belongs_to :shipping_charges
+  belongs_to :estimated_shipping_date
+  belongs_to :prefecture
 
   #スクロールバーの選択で「ーー」のときは保存できないようにする記述
   #ひとつのvalidatesに複数のカラムを入れても良い！
