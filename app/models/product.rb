@@ -11,7 +11,7 @@ class Product < ApplicationRecord
     validates :category_id, :product_condition_id, :shipping_charges_id, :estimated_shipping_date_id, :prefecture_id
   end
 
-  with_options numericality:{ only_integer: true, greater_than: 300, less_than: 9999999} do
+  with_options numericality:{ only_integer: true, greater_than: 299, less_than: 10000000} do
     validates :price, format: {with: /\A[0-9]+\z/,message: "is invalid.Input half-width alphanumeric."}
   end
 
