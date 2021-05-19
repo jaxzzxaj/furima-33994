@@ -23,8 +23,8 @@ class Product < ApplicationRecord
     validates :name, :category_id , :product_condition_id, :shipping_charges_id, :estimated_shipping_date_id, :prefecture_id, :price, :text, :image
   end
 
-  #下記のコードは画像があれば表示、なければテキストを表示させるというコード
-  #でもすべて必須なため必要ない
+  # 下記のコードは画像があれば表示、なければ画像を表示させるというコード
+  #今回は画像を入力しないとnewアクションへ戻るから必要ない
   # validates :image, presence: true, unless: :was_attached?
 
   # def was_attached?
