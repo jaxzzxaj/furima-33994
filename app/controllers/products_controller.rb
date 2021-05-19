@@ -21,8 +21,8 @@ class ProductsController < ApplicationController
   #上で設定したuserのカラム・レコードのidを取得はこっちであるべき？
   def create
     @product=Product.new(product_params)
-    @products = Product.includes(:user)
-    if @product.save
+    @products = @product.includes(:user)
+    if @products.save
     redirect_to "/"
     else render :new
     end
