@@ -10,5 +10,6 @@ FactoryBot.define do
     reader_family_name   {"ヤマダ"}
     reader_second_name   {"タロウ"}
     birthday             {"1940-01-01"}
+
   end
 end
