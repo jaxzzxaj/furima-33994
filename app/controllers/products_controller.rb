@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   #下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
-    # @product = Product.includes(:user)
+    @products = Product.includes(:user)
     # @products = Product.order("ceated_at DESK")
   end
 
@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   #上で設定したuserのカラム・レコードのidを取得はこっちであるべき？
   def create
     @product=Product.new(product_params)
+    @products = Product.includes(:user)
     if @product.save
     redirect_to "/"
     else render :new
