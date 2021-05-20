@@ -38,7 +38,8 @@ end
 
 group :development do
   #A Ruby's static code analysis tool.
-  gem 'rubocop' require: false
+  gem 'rubocop', require: false
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
