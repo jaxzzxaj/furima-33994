@@ -4,20 +4,15 @@ class ProductsController < ApplicationController
 
   # 下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
-    @products = Product.includes(:user).order('created_at DESC')
+    @products = Product.order('created_at DESC')
   end
 
-  # 下記の記述でnewアクションで記入したuserのすべてのレコード＋ユーザのidを取得。
-  # def new
-  #   @user=User.find(user_params)
-  # end
   # 下記の記述でnew.html.erb内のform_withで変数が必要だから設定する。
   def new
     @product = Product.new
   end
 
   # 下記の記述でnew.htmlでform_withで取得したデータをDBに保存してindexへ遷移するように設定。
-  # 上で設定したuserのカラム・レコードのidを取得はこっちであるべき？
   def create
     @product = Product.new(product_params)
     # @products = @product.includes(:user)

@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
 
       it 'passwordが６文字以上の半角英数字混合であれば登録できる' do
         @user.password = '0a0b0c'
-        @user.password_confirmation = '0a0b0c'
+        @user.encrypted_password = '0a0b0c'
         expect(@user).to be_valid
       end
     end
@@ -53,16 +53,16 @@ RSpec.describe User, type: :model do
 
       it 'passwordは6文字以上の入力が必要' do
         @user.password = '00000'
-        @user.password_confirmation = '00000'
+        @user.encrypted_password = '00000'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
 
       it 'passwordと確認用passwordの値は一致であること' do
         @user.password = '000001a'
-        @user.password_confirmation = '000001b'
+        @user.encrypted_password = '000001b'
         @user.valid?
-        expect(@user.errors[:password_confirmation]).to include("doesn't match Password")
+        expect(@user.errors[:encrypted_password]).to include("doesn't match Password")
       end
 
       it 'パスワードは半角英数字混合の入力が必須であること' do
