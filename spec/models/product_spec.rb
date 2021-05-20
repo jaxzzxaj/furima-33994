@@ -8,7 +8,6 @@ RSpec.describe Product, type: :model do
   describe '出品' do
     context '出品できる場合' do
       it 'すべてを入力する' do
-        binding.pry
         expect(@product).to be_valid
       end
     end

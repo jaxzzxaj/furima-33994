@@ -61,7 +61,6 @@ RSpec.describe User, type: :model do
       it 'passwordと確認用passwordの値は一致であること' do
         @user.password = '000001a'
         @user.password_confirmation = '000001b'
-        @user.password != @user.password_confirmation
         @user.valid?
         expect(@user.errors[:password_confirmation]).to include("doesn't match Password")
       end
