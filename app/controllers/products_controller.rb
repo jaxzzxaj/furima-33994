@@ -21,9 +21,9 @@ class ProductsController < ApplicationController
     else render :new
     end
   end
-
+  #DBに保存したデータをshowに使えるようにしたい。
   def show
-    products = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   private
