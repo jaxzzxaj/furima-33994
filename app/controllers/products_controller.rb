@@ -32,6 +32,16 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  #編集した内容をDBに保存、不備があった場合はeditに戻る
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to '/'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def product_params

@@ -5,7 +5,6 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%# メモ：金額設定するからlocaltruedoにならない気がする %>
     <%= form_with model: @product, url:products_path,local: true do |f| %>
 
     <%# 出品画像 %>
