@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
   # 編集画面にもデータを持っていくようにする。
   def edit
     @product = Product.find(params[:id])
+    redirect_to '/' unless current_user.id == @product.user_id
   end
 
   # 編集した内容をDBに保存、不備があった場合はeditに戻る
