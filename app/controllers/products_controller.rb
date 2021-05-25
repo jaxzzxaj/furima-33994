@@ -41,9 +41,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destory
+    @product.destroy
   end
-  
+
   private
 
   def product_params
