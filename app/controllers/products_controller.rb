@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  # 未ログインuserを強制的にログインページへ遷移させる設定
-  before_action :authenticate_user!, except: :index
+  #未ログインuserを強制的にログインページへ遷移させる設定
+  before_action :authenticate_user!, except: [:index, :show]
 
   # 下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
       redirect_to '/'
     else render :new
     end
+  end
+
+  # DBに保存したデータをshowに使えるようにしたい。
+  def show
+    @product = Product.find(params[:id])
   end
 
   private
