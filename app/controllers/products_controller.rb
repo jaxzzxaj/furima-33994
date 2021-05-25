@@ -27,6 +27,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  #編集画面にもデータを持っていくようにする。
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   private
 
   def product_params
