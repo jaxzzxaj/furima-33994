@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   root to: 'products#index'
   #テーブルに対して、許可するアクションの設定。
   resources :products
-  resources :order
+  #productとorderをネストする（productのアクションの中身をorderにも使えるようにするため）
+  resources :products, only: [:show] do
+    resources :orders, only: [:index, :create]
+  end
 end
