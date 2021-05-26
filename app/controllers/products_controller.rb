@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # 未ログインuserを強制的にログインページへ遷移させる設定
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_params, only: [:show,:edit, :update]
+  before_action :then_redirect, only: [:edit, :update]
 
   # 下記の記述で@productsが新規投稿順に並ぶようにしている。
   def index
@@ -28,7 +29,6 @@ class ProductsController < ApplicationController
 
   # 編集画面にもデータを持っていくようにする。
   def edit
-    then_redirect
   end
 
   # 編集した内容をDBに保存、不備があった場合はeditに戻る
