@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root to: 'products#index'
   #テーブルに対して、許可するアクションの設定。
   resources :products
+  resources :order
 end
