@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   # 未ログインuserを強制的にログインページへ遷移させる設定
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :find_params, only: [:show,:edit, :update, :destroy]
   before_action :then_redirect, only: [:edit, :update,:destroy]
 
@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   # 下記の記述でnew.html.erb内のform_withで変数が必要だから設定する。
   def new
     @product = Product.new
+
   end
 
   # 下記の記述でnew.htmlでform_withで取得したデータをDBに保存してindexへ遷移するように設定。
@@ -29,6 +30,7 @@ class ProductsController < ApplicationController
 
   # 編集画面にもデータを持っていくようにする。
   def edit
+    # redirect_to root_path unless @product.user.id or @product.purchase_history.present?
   end
 
   # 編集した内容をDBに保存、不備があった場合はeditに戻る
@@ -59,6 +61,6 @@ class ProductsController < ApplicationController
   end
 
   def then_redirect
-    redirect_to '/' unless current_user.id == @product.user_id
+    redirect_to '/' unless current_user.id == @product.user_id && @product.purchase_history == nil
+    end
   end
-end

@@ -4,23 +4,38 @@ class OrdersController < ApplicationController
 
   def index
     @product = Product.find(params[:product_id])
+    @perchase_order = PerchaseOrder.new
   end
 
   def create
+    # binding.pry
+    @perchase_order =PerchaseOrder.new(order_params)
+    @product = Product.find(params[:product_id])
+    if @perchase_order.valid?
+      paying
+      @perchase_order.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   private
 
-  def product_params
-    params.require(:product).permit(:name, :category_id, :product_condition_id, :shipping_charges_id, :estimated_shipping_date_id,
-                                    :prefecture_id, :price, :text, :image).merge(user_id: current_user.id)
+  def order_params
+    params.require( :perchase_order).permit(:zip_code, :prefecture_id, :municipality, :adress, :building_name, :phone_number).merge(user_id: current_user.id,token: params[:token] ,product_id: params[:product_id])
   end
 
-  def find_params
-    @product = Product.find(params[:id])
+  def paying
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @product.price,
+      card:  order_params[:token],
+      currency: 'jpy'
+    )
   end
-
-  def then_redirect
-    redirect_to '/' unless current_user.id != @product.user_id
-  end
+  # def purchase_history_params
+  #   params.require(:order).permit(:number, :exp_month, :exp_year, :code).merge(token: params[:token])
+  # end
 end
+
