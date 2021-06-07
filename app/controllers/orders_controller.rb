@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  # before_action :authenticate_user!, except: [:index]
-  # before_action :redirect_product_user, only: [:index,:create]
+  before_action :authenticate_user!, only: [:index, :create]
+  # before_action :move_to_index, only: [:index,:create]
 
   def index
     @product = Product.find(params[:product_id])
@@ -35,7 +35,10 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-  # def purchase_history_params
-  #   params.require(:order).permit(:number, :exp_month, :exp_year, :code).merge(token: params[:token])
-  # end
+
+#   def move_to_index
+#     unless user_signed_in?
+#     redirect_to '/'
+#   end
+# end
 end
