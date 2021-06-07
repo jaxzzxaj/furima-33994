@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :purchase_history
 
-  #配送先のvalidationを書く
-  #購入するたびに入力すること,郵便番号、都道府県、市区町村、番地、電話番号は必須条件
+  # 配送先のvalidationを書く
+  # 購入するたびに入力すること,郵便番号、都道府県、市区町村、番地、電話番号は必須条件
   # with_options presence: true do
   #   validates :zip_code, :prefecture_id, :municipality, :address, :phone_number
 

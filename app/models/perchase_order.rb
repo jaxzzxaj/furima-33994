@@ -1,6 +1,7 @@
 class PerchaseOrder
   include ActiveModel::Model
-  attr_accessor :zip_code, :prefecture_id, :municipality, :adress, :building_name, :phone_number, :user_id, :product_id, :token, :purchase_history_id
+  attr_accessor :zip_code, :prefecture_id, :municipality, :adress, :building_name, :phone_number, :user_id, :product_id, :token,
+                :purchase_history_id
 
   with_options presence: true do
     validates :zip_code, :prefecture_id, :municipality, :adress, :phone_number, :token
@@ -10,17 +11,16 @@ class PerchaseOrder
     end
   end
 
-  #orderの正規表現
-  validates :zip_code, format: {with: /\d{3}[-]\d{4}/, message: 'is invalid,Input half-width numbers with hyphen'}
-  with_options numericality: {only_integer: true} do
-    validates :phone_number, format: {with: /\d{11}/, message: 'is invalid.Input half-width alphanumeric.'}
+  # orderの正規表現
+  validates :zip_code, format: { with: /\d{3}-\d{4}/, message: 'is invalid,Input half-width numbers with hyphen' }
+  with_options numericality: { only_integer: true } do
+    validates :phone_number, format: { with: /\d{11}/, message: 'is invalid.Input half-width alphanumeric.' }
   end
-
 
   def save
     purchase_history = PurchaseHistory.create(product_id: product_id, user_id: user_id)
-# binding.pry
-    Order.create( zip_code: zip_code, prefecture_id: prefecture_id, municipality: municipality, adress: adress,
-                  building_name: building_name, phone_number: phone_number,purchase_history_id: purchase_history.id)
+    # binding.pry
+    Order.create(zip_code: zip_code, prefecture_id: prefecture_id, municipality: municipality, adress: adress,
+                 building_name: building_name, phone_number: phone_number, purchase_history_id: purchase_history.id)
   end
 end

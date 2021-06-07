@@ -5,7 +5,7 @@ FactoryBot.define do
     municipality          { '入間市' }
     adress                { '2番地' }
     phone_number          { '09012341234' }
-    token                 {"tok_abcdefghijk00000000000000000"}
+    token                 { 'tok_abcdefghijk00000000000000000' }
     # product               { FactoryBot.create(:user) }
 
     # purchase_historyを使ってuserとproductのfactoryとつなぐ
