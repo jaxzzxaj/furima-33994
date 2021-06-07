@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  # before_action :move_to_index, only: [:index,:create]
+  before_action :move_to_index, only: [:index,:create]
 
   def index
     @product = Product.find(params[:product_id])
@@ -36,9 +36,10 @@ class OrdersController < ApplicationController
     )
   end
 
-#   def move_to_index
-#     unless user_signed_in?
-#     redirect_to '/'
-#   end
-# end
+  def move_to_index
+    @product = Product.find(params[:product_id])
+    if @product.user.id == current_user.id
+      redirect_to '/'
+    end
+  end
 end
