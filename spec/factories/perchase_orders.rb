@@ -6,10 +6,10 @@ FactoryBot.define do
     adress                { '2番地' }
     phone_number          { '09012341234' }
     token                 { 'tok_abcdefghijk00000000000000000' }
-    # product               { FactoryBot.create(:user) }
 
-    # purchase_historyを使ってuserとproductのfactoryとつなぐ
-    # association :user, :product
-    # association :purchase_history
+    building_name          {'まるしかくビル'}
+
+    association :user
+    association :product
   end
 end

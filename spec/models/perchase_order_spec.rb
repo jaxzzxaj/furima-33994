@@ -2,12 +2,21 @@ require 'rails_helper'
 
 RSpec.describe PerchaseOrder, type: :model do
   before do
-    @perchase_order = FactoryBot.build(:perchase_order)
+    @user = FactoryBot.create(:user)
+    @product = FactoryBot.create(:product, user_id: @user.id)
+    @perchase_order = FactoryBot.build(:perchase_order, user_id: @user.id, product_id: @product.id)
+    sleep 1
   end
+
 
   describe '購入' do
     context '購入できる場合' do
+      it '購入するたびに記入欄すべてを入力する' do
+        expect(@perchase_order).to be_valid
+      end
+
       it '購入するたびに必要事項を入力する' do
+        @perchase_order.building_name = ""
         expect(@perchase_order).to be_valid
       end
     end
