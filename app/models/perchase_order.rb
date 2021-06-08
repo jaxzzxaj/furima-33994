@@ -4,7 +4,7 @@ class PerchaseOrder
                 :purchase_history_id
 
   with_options presence: true do
-    validates :zip_code, :prefecture_id, :municipality, :adress, :phone_number, :token
+    validates :zip_code, :prefecture_id, :municipality, :adress, :phone_number, :token, :product_id, :user_id
 
     with_options numericality: { other_than: 0 } do
       validates :prefecture_id
@@ -14,7 +14,7 @@ class PerchaseOrder
   # orderの正規表現
   validates :zip_code, format: { with: /\d{3}-\d{4}/, message: 'is invalid,Input half-width numbers with hyphen' }
   with_options numericality: { only_integer: true } do
-    validates :phone_number, format: { with: /\d{11}/, message: 'is invalid.Input half-width alphanumeric.' }
+    validates :phone_number, length:{maximum: 11}, format: {with:/\A\d{1,11}\z/}
   end
 
   def save

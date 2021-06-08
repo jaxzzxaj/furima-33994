@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe PerchaseOrder, type: :model do
   before do
     @user = FactoryBot.create(:user)
-    @product = FactoryBot.create(:product, user_id: @user.id)
+    @product = FactoryBot.build(:product, user_id: @user.id)
+    @product.save
     @perchase_order = FactoryBot.build(:perchase_order, user_id: @user.id, product_id: @product.id)
     sleep 1
   end
@@ -63,15 +64,32 @@ RSpec.describe PerchaseOrder, type: :model do
       it 'phone_numberは空だと不可' do
         @perchase_order.phone_number = ''
         @perchase_order.valid?
-        expect(@perchase_order.errors.full_messages).to include("Phone number can't be blank", 'Phone number is not a number',
-                                                                'Phone number is invalid.Input half-width alphanumeric.')
+        expect(@perchase_order.errors.full_messages).to include("Phone number can't be blank", "Phone number is not a number")
       end
 
       it 'phone_numberは数値のみ' do
         @perchase_order.phone_number = '090123123a'
         @perchase_order.valid?
-        expect(@perchase_order.errors.full_messages).to include('Phone number is not a number',
-                                                                'Phone number is invalid.Input half-width alphanumeric.')
+        expect(@perchase_order.errors.full_messages).to include("Phone number is not a number")
+      end
+
+      it 'phone_numberは12桁以上だと購入できない' do
+        @perchase_order.phone_number = '0901111222233334444'
+        @perchase_order.valid?
+        expect(@perchase_order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+      end
+
+      it 'Product_idが空では購入できないこと' do
+        # binding.pry
+        @perchase_order.product_id = nil
+        @perchase_order.valid?
+        expect(@perchase_order.errors.full_messages).to include("Product can't be blank")
+      end
+
+      it 'User_idが空では購入できないこと' do
+        @perchase_order.user_id = nil
+        @perchase_order.valid?
+        expect(@perchase_order.errors.full_messages).to include("User can't be blank")
       end
 
       it 'tokenが空では登録できないこと' do
