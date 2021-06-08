@@ -19,7 +19,6 @@ class PerchaseOrder
 
   def save
     purchase_history = PurchaseHistory.create(product_id: product_id, user_id: user_id)
-    # binding.pry
     Order.create(zip_code: zip_code, prefecture_id: prefecture_id, municipality: municipality, adress: adress,
                  building_name: building_name, phone_number: phone_number, purchase_history_id: purchase_history.id)
   end

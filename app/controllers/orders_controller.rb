@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @perchase_order = PerchaseOrder.new(order_params)
     @product = Product.find(params[:product_id])
     if @perchase_order.valid?
