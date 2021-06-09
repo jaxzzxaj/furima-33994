@@ -1,15 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index,:create]
+  before_action :payed_redirect, only: [:index]
 
   def index
-    @product = Product.find(params[:product_id])
     @perchase_order = PerchaseOrder.new
   end
 
   def create
     @perchase_order = PerchaseOrder.new(order_params)
-    @product = Product.find(params[:product_id])
     if @perchase_order.valid?
       paying
       @perchase_order.save
@@ -40,5 +39,13 @@ class OrdersController < ApplicationController
     if @product.user.id == current_user.id
       redirect_to '/'
     end
+  end
+
+  # def then_redirect
+  #   redirect_to '/' unless current_user.id == @product_user.id && @product.purchase_history.nil?
+  #   end
+
+  def payed_redirect
+    redirect_to '/' unless @product.purchase_history.nil?
   end
 end

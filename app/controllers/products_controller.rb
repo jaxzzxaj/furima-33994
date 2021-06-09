@@ -44,6 +44,7 @@ class ProductsController < ApplicationController
   def destroy
     redirect_to '/' if @product.destroy
   end
+  end
 
   private
 
@@ -58,5 +59,4 @@ class ProductsController < ApplicationController
 
   def then_redirect
     redirect_to '/' unless current_user.id == @product.user_id && @product.purchase_history.nil?
-  end
-end
+    end
