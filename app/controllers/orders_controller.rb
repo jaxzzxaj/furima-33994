@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :move_to_index, only: [:index,:create]
-  before_action :payed_redirect, only: [:index ,:create]
+  before_action :move_to_index, only: [:index, :create]
+  before_action :payed_redirect, only: [:index, :create]
 
   def index
     @perchase_order = PerchaseOrder.new
@@ -36,17 +36,10 @@ class OrdersController < ApplicationController
 
   def move_to_index
     @product = Product.find(params[:product_id])
-    if @product.user.id == current_user.id
-      redirect_to '/'
-    end
+    redirect_to '/' if @product.user.id == current_user.id
   end
-
-  # def then_redirect
-  #   redirect_to '/' unless current_user.id == @product_user.id && @product.purchase_history.nil?
-  #   end
 
   def payed_redirect
     redirect_to '/' unless @product.purchase_history.nil?
   end
-  end
-
+end

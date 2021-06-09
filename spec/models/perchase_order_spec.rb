@@ -9,7 +9,6 @@ RSpec.describe PerchaseOrder, type: :model do
     sleep 1
   end
 
-
   describe '購入' do
     context '購入できる場合' do
       it '購入するたびに記入欄すべてを入力する' do
@@ -17,7 +16,7 @@ RSpec.describe PerchaseOrder, type: :model do
       end
 
       it '購入するたびに建物名の記述無しで購入する' do
-        @perchase_order.building_name = ""
+        @perchase_order.building_name = ''
         expect(@perchase_order).to be_valid
       end
     end
@@ -64,13 +63,13 @@ RSpec.describe PerchaseOrder, type: :model do
       it 'phone_numberは空だと不可' do
         @perchase_order.phone_number = ''
         @perchase_order.valid?
-        expect(@perchase_order.errors.full_messages).to include("Phone number can't be blank", "Phone number is not a number")
+        expect(@perchase_order.errors.full_messages).to include("Phone number can't be blank", 'Phone number is not a number')
       end
 
       it 'phone_numberは数値のみ' do
         @perchase_order.phone_number = '090123123a'
         @perchase_order.valid?
-        expect(@perchase_order.errors.full_messages).to include("Phone number is not a number")
+        expect(@perchase_order.errors.full_messages).to include('Phone number is not a number')
       end
 
       it 'phone_numberは12桁以上だと購入できない' do
