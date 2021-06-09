@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   # 未ログインuserを強制的にログインページへ遷移させる設定
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
   before_action :find_params, only: [:show, :edit, :update, :destroy]
   before_action :then_redirect, only: [:edit, :update, :destroy]
 

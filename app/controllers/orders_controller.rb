@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index,:create]
-  before_action :payed_redirect, only: [:index]
+  before_action :payed_redirect, only: [:index ,:create]
 
   def index
     @perchase_order = PerchaseOrder.new
@@ -48,4 +48,5 @@ class OrdersController < ApplicationController
   def payed_redirect
     redirect_to '/' unless @product.purchase_history.nil?
   end
-end
+  end
+
