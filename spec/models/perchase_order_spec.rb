@@ -16,7 +16,7 @@ RSpec.describe PerchaseOrder, type: :model do
         expect(@perchase_order).to be_valid
       end
 
-      it '購入するたびに必要事項を入力する' do
+      it '購入するたびに建物名の記述無しで購入する' do
         @perchase_order.building_name = ""
         expect(@perchase_order).to be_valid
       end
@@ -80,7 +80,6 @@ RSpec.describe PerchaseOrder, type: :model do
       end
 
       it 'Product_idが空では購入できないこと' do
-        # binding.pry
         @perchase_order.product_id = nil
         @perchase_order.valid?
         expect(@perchase_order.errors.full_messages).to include("Product can't be blank")
