@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :shipping_charges
   belongs_to :estimated_shipping_date
   belongs_to :prefecture
+  has_one    :purchase_history
 
   # スクロールバーの選択で「ーー」のときは保存できないようにする記述
   # ひとつのvalidatesに複数のカラムを入れても良い！

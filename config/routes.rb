@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'products/index'
   #"/"のリクエストをされたときに行動するアクションを設定。
   root to: 'products#index'
+
   #テーブルに対して、許可するアクションの設定。
-  resources :products
+  #productとorderをネストする（productのアクションの中身をorderにも使えるようにするため）
+  resources :products do
+    resources :orders, only: [:index, :create]
+  end
 end

@@ -56,7 +56,7 @@
 -belongs_to :user
 -belongs_to :product
 
-##  purchase_histories　テーブル　
+##  purchase_histories テーブル
 
 | Column      | Type        | Options              |
 | ----------- | ----------- | -------------------- |
@@ -69,7 +69,7 @@
 -belongs_to :product
 -has_one    :user_address
 
-## user_addresses　テーブル
+## orders テーブル
 
 | Column                  | Type       | Options             | default
 | ----------------------- | ---------  | --------------------| ----------
