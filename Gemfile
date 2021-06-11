@@ -71,3 +71,4 @@ gem 'active_hash'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'payjp'
+gem "aws-sdk-s3", require: false
