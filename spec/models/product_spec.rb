@@ -96,7 +96,7 @@ RSpec.describe Product, type: :model do
       it 'priceが空だと不可' do
         @product.price = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price can't be blank")
+        expect(@product.errors.full_messages).to include("Price cant be blank")
       end
 
       it 'priceが299以下だと不可' do
