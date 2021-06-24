@@ -7,7 +7,10 @@
       <%= @product.name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @product.image, class:"item-box-img" %>
+      <%#= image_tag @product.image, class:"item-box-img" %>
+      <% @product.images.each do |image| %>
+              <%= image_tag image, class: 'images'%>
+              <% end %>
 
       <% if @product.purchase_history.present? %>
       <div class="sold-out">

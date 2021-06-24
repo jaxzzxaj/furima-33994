@@ -25,12 +25,18 @@
   font-size: 25px;
 }
 
-.item-box-img {
-  height: 50vh;
-  width: 60vw;
-  min-height: 500px;
+.item-img-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.item-img-content img {
+  max-height: 300px;
+  width: 50%;
+  margin: 0 auto;
   background-color: rgb(205, 202, 202);
-  object-fit: contain;
+  object-fit: cover;
+  background-size: cover;
 }
 
 .item-price-box {

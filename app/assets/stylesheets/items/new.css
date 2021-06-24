@@ -95,6 +95,7 @@
 }
 
 .image-element{
+  display: flex;
   max-width: 500px;
   max-height: 500px;
   margin: 0;
@@ -106,6 +107,7 @@
   width: 50%;
   height: 50%;
   margin: 0 auto;
+  object-fit: cover;
 }
 /* /出品画像 */
 
