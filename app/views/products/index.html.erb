@@ -127,11 +127,14 @@
     <ul class='item-lists'>
 
     <%if @products.length != 0  %>
-    <%@products.each do |product| %>
+      <%@products.each do |product| %>
       <li class='list'>
         <%= link_to product_path(product.id), method: :get do %>
         <div class='item-img-content'>
-          <%= image_tag product.image, class: "item-img"%>
+        <%= image_tag (product.images[0]), class: "item-img"%>
+        <%# product.images.each do |image|%>
+          <%#= image_tag image, class: "images"%>
+          <%# end %>
 
 
           <% if product.purchase_history.present? %>

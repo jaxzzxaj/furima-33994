@@ -89,6 +89,24 @@
   margin-bottom: 15px;
 }
 
+.image-list{
+  display: flex;
+  text-align: center;
+}
+
+.image-element{
+  max-width: 500px;
+  max-height: 500px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.image-element img{
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
 /* /出品画像 */
 
 /* 商品名と商品説明 */

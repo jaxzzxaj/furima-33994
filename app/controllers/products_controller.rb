@@ -50,7 +50,7 @@ end
 
 def product_params
   params.require(:product).permit(:name, :category_id, :product_condition_id, :shipping_charges_id, :estimated_shipping_date_id,
-                                  :prefecture_id, :price, :text, :image).merge(user_id: current_user.id)
+                                  :prefecture_id, :price, :text,:image, images: []).merge(user_id: current_user.id)
 end
 
 def find_params
