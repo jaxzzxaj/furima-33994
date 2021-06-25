@@ -31,8 +31,8 @@
 }
 
 .item-img-content img {
-  max-height: 300px;
-  width: 50%;
+  max-height: 450px;
+  width: 450px;
   margin: 0 auto;
   background-color: rgb(205, 202, 202);
   object-fit: cover;

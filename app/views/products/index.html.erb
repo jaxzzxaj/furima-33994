@@ -132,9 +132,6 @@
         <%= link_to product_path(product.id), method: :get do %>
         <div class='item-img-content'>
         <%= image_tag (product.images[0]), class: "item-img"%>
-        <%# product.images.each do |image|%>
-          <%#= image_tag image, class: "images"%>
-          <%# end %>
 
 
           <% if product.purchase_history.present? %>

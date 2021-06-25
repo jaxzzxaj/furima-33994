@@ -19,9 +19,9 @@ app/assets/stylesheets/items/new.css %>
       </div>
       <div class="click-upload">
         <p>
-          クリックしてファイルをアップロード
+          クリックしてファイルをアップロード（複数枚選択可）
         </p>
-        <%= f.file_field :images, name: 'product[images][]', id:'product_image' %>
+        <%= f.file_field :images, name: 'product[images][]', id:'product_image', multiple: true %>
       </div>
     </div>
 
