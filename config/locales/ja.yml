@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        encrypted_password: パスワード
+        family_name: 名字（全角）
+        reader_family_name: 名字（カナ）
+        second_name: 名前（全角）
+        reader_second_name: 名前（カナ）で
+        birthday: 誕生日
+      product:
+        text: テキスト
+        image: 画像
+        name: 名前
+        category-id: カテゴリー
+        product_condition_id: 商品状態
+        shipping_charges_id: 送料
+        estimated_shipping_date_id: 出荷予定
+        prefecture_id: 都道府県
+        price: 価格
+        text: テキスト
+      order:
+        zip_code: 郵便番号
+        prefecture_id: 都道府県
+        municipality: 市区町村
+        adress: 住所
+        building_name: ピル名
+        phone_number: 電話番号
