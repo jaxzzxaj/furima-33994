@@ -6,8 +6,8 @@
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @product, url:products_path,local: true do |f| %>
-    <%= render 'shared/error_messages', model:@product %>
-    <%= render 'layouts/error_messages', model: form.object %>
+    <%= render 'shared/error_messages', model: @product %>
+    <%= render 'layouts/error_messages', model: f.object %>
 
 
     <div class="img-upload">
